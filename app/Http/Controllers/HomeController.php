@@ -65,27 +65,28 @@ class HomeController extends Controller
         // )->orWhere('name','<>','dada')
         // ->ddRawSql();
         
-        DB::table('users')->join('comments', 'comments.user_id', '=', 'users.id')
-        ->ddRawSql();
+        // DB::table('users')->join('comments', 'comments.user_id', '=', 'users.id')
+        // ->ddRawSql();
 
 
 
-        // foreach($data1 as $item){
-        //     echo "DATA 1" . $item->name;
-        // }
+        // // foreach($data1 as $item){
+        // //     echo "DATA 1" . $item->name;
+        // // }
 
-        // User::query()->where('id','1')->update(['name'=>'hehehe']);die;
+        // // User::query()->where('id','1')->update(['name'=>'hehehe']);die;
 
-        // foreach($data2 as $item){
-        //     echo "DATA 2" . $item->name;
-        // }
-        // die;
+        // // foreach($data2 as $item){
+        // //     echo "DATA 2" . $item->name;
+        // // }
+        // // die;
 
-        // dd($data1,$data2);
+        // // dd($data1,$data2);
 
-        $user = User::query()->get();
-        return view('welcome', [
-            'users' => $user
-        ]);
+        // $user = User::query()->get();
+        // return view('welcome', [
+        //     'users' => $user
+        // ]);
+        return view('admin.master');
     }
 }

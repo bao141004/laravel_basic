@@ -1,7 +1,14 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplierController;
 use App\Models\User;
+use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Contracts\Database\Query\Builder as QueryBuilder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -75,6 +82,28 @@ Route::get('/', function () {
     // DB::table('users')->whereRaw('month(birth_date)=5')->ddRawSql();
 
 
-    
+
+    //Câu 6 hình ảnh 
+    // DB::table('employees', 'e')
+    // ->select('e.first_name','e.last_name','d.department_name')->join('department as d', 'd.department_id', '=', 'e.department_id')
+    // ->where('e.salary' , function (QueryBuilder $query) {
+    //     $query->selectRaw('MAX(e.salary)')
+    //     ->from('employess')
+    //     ->where('department_id','e.department_id');
+    // })->ddRawSql();
+        return view('admin.master');
 });
-$router->get('index',[HomeController::class, 'index']);
+Route::get('shop-single', function () {
+    return view('client.shop-single');
+});
+
+Route::get('/admin', function () {
+            return view('admin.master');
+    });
+
+    
+Route::resource('products',ProductController::class);
+Route::resource('customers',CustomerController::class);
+Route::resource('orders',OrderController::class);
+Route::resource('order-details',OrderDetailController::class);
+Route::resource('suppliers',SupplierController::class);
